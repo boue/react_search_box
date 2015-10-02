@@ -12,11 +12,19 @@
   <script type="text/jsx">
     
     var Criteria = React.createClass({
+      
+      handleClick: function(e){
+        var criteria;
+        e.preventDefault();
+        criteria = React.findDOMNode(this.refs.search).value.trim();
+        this.props.onSearch(criteria);
+      },
+
       render: function(){
         return(
           <div>
             <input ref="search" type="search" placeholder="Search criteria" />
-            <button>Go</button>
+            <button onClick={this.handleClick}>Go</button>
           </div>
         )
       }
