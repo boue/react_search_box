@@ -7,10 +7,21 @@
 <body>
   <h1>Search for a company</h1>
   <div id="app"></div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+  <script src="https://fb.me/react-0.13.3.min.js"></script>
+  <script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
   <script type="text/jsx">
     
+    var Criteria = React.createClass({
+      render: function(){
+        return(
+          <div>
+            <input ref="search" type="search" placeholder="Search criteria" />
+            <button>Go</button>
+          </div>
+        )
+      }
+    });
+
     var Search = React.createClass({
       render: function(){
         return (
