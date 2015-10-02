@@ -44,10 +44,19 @@
     });
 
     var Search = React.createClass({
+
+      handleSearch: function(criteria){
+        return (
+          <div>
+            console.log(criteria);
+          </div>
+        )
+      },
+
       render: function(){
         return (
           <div>
-            <Criteria />
+            <Criteria onSearch={this.handleSearch} />
             <Results />
           </div>
         )
