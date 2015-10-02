@@ -11,6 +11,19 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
   <script type="text/jsx">
     
+    var Search = React.createClass({
+      render: function(){
+        return (
+          <div>
+            <Criteria />
+            <Results />
+          </div>
+        )
+      }
+    });
+
+    React.render(<Search />, document.getElementById("app"));
+
   </script>
 </body>
 </html>
