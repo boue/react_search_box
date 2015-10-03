@@ -77,6 +77,17 @@
           name: "Rancho grande"
       }],
 
+      getCustomers: function(criteria){
+        var i,
+        ret = [];
+        for (i = 0; i < this.customers.length; i = i + 1){
+          if (this.customers[i].name.toLowerCase().indexOf(criteria) === 0) {
+            ret.push(this.customers[i]);
+          }
+        }
+        return ret;
+      },
+
       handleSearch: function(criteria){
         return (
           <div>
