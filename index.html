@@ -89,18 +89,17 @@
       },
 
       handleSearch: function(criteria){
-        return (
-          <div>
-            console.log(criteria);
-          </div>
-        )
+        var i,
+        ret;
+        ret = this.getCustomers(criteria);
+        this.setState({data: ret});
       },
 
       render: function(){
         return (
           <div>
             <Criteria onSearch={this.handleSearch} />
-            <Results />
+            <Results data={this.state.data} />
           </div>
         )
       }
