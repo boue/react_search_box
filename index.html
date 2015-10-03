@@ -31,15 +31,24 @@
     });
 
     var Results = React.createClass({
+
       render: function(){
-        return (
-          <div>
-            <ul>
-              <li>Fake1</li>
-              <li>Fake2</li>
+          var listItems = this.props.data.map(function(customer){
+            return (
+              <li>{customer.name}</li>
+            );
+          });
+
+          var listStyle = {
+            listStyleType: 'none',
+            padding: '0'
+          };
+
+          return (
+            <ul style = {listStyle}>
+              {listItems}
             </ul>
-          </div>
-        )
+          );
       }
     });
 

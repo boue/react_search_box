@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+  </head>
+
+  <body>
+    <h1>Search for a company</h1>
+    
+    <div id="app"></div>
+
+    <script src="https://fb.me/react-0.13.3.min.js"></script>
+    <script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
+    <script type="text/jsx">
+      var Criteria = React.createClass({
+        handleClick: function (e) {
+          var criteria;
+          e.preventDefault();
+          criteria = React.findDOMNode(this.refs.search).value.trim();
+            this.props.onSearch(criteria);
+
+        },
+          render: function () {
+              return (
+                <div>
+                  <input ref="search" type="search" placeholder="Search criteria" />
+                  <button onClick={this.handleClick}>Go</button>
+                </div>
+              )
+          }
+      });
+
+      var Results = React.createClass({
+          render: function () {
+            var listItems = this.props.data.map(function (customer) {
+              return (
+                <li>{customer.name}</li>
+              );
+            });
+            var listStyle = {
+              listStyleType: 'none',
+              padding: '0'
+            };
+            return (
+              <ul style={listStyle}>
+                {listItems}
+              </ul>
+            );
+          }
+      });
+
+      var Search = React.createClass({
+        getInitialState: function() {
+            return {data: []};
+        },
+        customers: [{
+          name: "Alfreds Futterkiste"
+        }, {
+          name: "Berglunds snabbköp"
+        }, {
+          name: "Cactus Comidas para llevar"
+        }, {
+          name: "Chop-suey Chinese"
+        }, {
+          name: "Du monde entier"
+        }, {
+          name: "Ernst Handel"
+        }, {
+          name: "France restauration"
+        }, {
+          name: "Island Trading"
+        }, {
+          name: "Let's Stop N Shop"
+        }, {
+          name: "Maison Dewey"
+        }, {
+          name: "Paris spécialités"
+        }, {
+          name: "Que Delícia"
+        }, {
+          name: "Rancho grande"
+        }],
+        getCustomers: function (criteria) {
+          var i,
+            ret = [];
+          for (i = 0; i < this.customers.length; i = i + 1) {
+                      if (this.customers[i].name.toLowerCase().indexOf(criteria) === 0) {
+                          ret.push(this.customers[i]);
+                      }
+                  }
+                  return ret;
+        },
+          
+        handleSearch: function (criteria) {
+          var i,
+            ret;
+          ret = this.getCustomers(criteria);
+          this.setState({data: ret});
+        },
+          render: function () {
+              return (
+                <div>
+                  <Criteria onSearch={this.handleSearch} />
+                  <Results data={this.state.data} />
+                </div>
+              )
+          }
+      });
+
+      React.render(<Search />, document.getElementById("app"));
+    </script>
+  </body>
+</html>
