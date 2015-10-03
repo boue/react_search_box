@@ -45,6 +45,38 @@
 
     var Search = React.createClass({
 
+      getInitialState: function(){
+        return {data: []};
+      },
+
+      customers: [{
+          name: "Alfreds Futterkiste"
+        }, {
+          name: "Berglunds snabbköp"
+        }, {
+          name: "Cactus Comidas para llevar"
+        }, {
+          name: "Chop-suey Chinese"
+        }, {
+          name: "Du monde entier"
+        }, {
+          name: "Ernst Handel"
+        }, {
+          name: "France restauration"
+        }, {
+          name: "Island Trading"
+        }, {
+          name: "Let's Stop N Shop"
+        }, {
+          name: "Maison Dewey"
+        }, {
+          name: "Paris spécialités"
+        }, {
+          name: "Que Delícia"
+        }, {
+          name: "Rancho grande"
+      }],
+
       handleSearch: function(criteria){
         return (
           <div>
